@@ -10,7 +10,7 @@ class Member(db.Model):
     signups = db.relationship('Signup', backref='member', lazy=True)
 
     def __repr__(self):
-        return f'<Member {self.first_name} {self.last_name}, {self.net_id}>'
+        return f'<Member: {self.first_name} {self.last_name}, {self.net_id}>'
 
 class Event(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -18,15 +18,15 @@ class Event(db.Model):
     event_name = db.Column(db.String(50), unique=True, nullable=False)
     max_capacity = db.Column(db.Integer, nullable=True)
 
+    signups = db.relationship('Signup', backref='event', lazy=True)
+
     def __repr__(self):
-        return f'<Event {self.event_name} ({self.date} on {self.date})>'
+        return f'<Event: {self.event_name})>'
 
 class Signup(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     member_id = db.Column(db.Integer, db.ForeignKey('member.id'), nullable=False)
     event_id = db.Column(db.Integer, db.ForeignKey('event.id'), nullable=False)
-
-    signups = db.relationship('Signup', backref='event', lazy=True)
 
     @property
     def event_name(self):
