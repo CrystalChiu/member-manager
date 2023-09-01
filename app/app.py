@@ -8,17 +8,18 @@ from routes import routes
 
 if __name__ == '__main__':
 
-    print("entered")
-
     app = Flask(__name__)
-
-    routes(app)
 
     database_path = os.path.join(app.root_path, 'database', 'database.db')
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + database_path  # SQLite database URI
 
     db = SQLAlchemy(app)  # Create a SQLAlchemy database instance
     migrate = Migrate(app, db) 
+
+    print(db)
+
+    #routes(app, db)
+    routes(app, db)
 
     app.run(debug=True)
 

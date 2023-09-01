@@ -1,0 +1,23 @@
+#input-form {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+#submit-button {
+    margin-top: 10px;
+    width: fit-content;
+    padding: 10px 15px 10px 15px;
+    background: royalblue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input {
+    max-width: 50%;
+}
