@@ -1,5 +1,6 @@
 from flask import render_template, request
 from sqlalchemy.exc import IntegrityError
+from models import Member, Event, Signup
 
 def routes(app, db):
     @app.route('/')
@@ -23,13 +24,11 @@ def routes(app, db):
                 status = "free"
                 print(fname + " " + lname + " " + netId)
 
-                # running into issues here, possible because of the Member model?
                 #create new member object & populate fields w/input data
-                new_member = db.Member(first_name=fname, last_name=lname, net_id=netId, status=status) 
-                print("HERE2")
+                new_member = Member(first_name=fname, last_name=lname, net_id=netId, status=status) 
+
                 # query insert into 'member'
                 db.session.add(new_member)
-                print("HERE3")
                 db.session.commit()
 
                 return("Student successfully added")
