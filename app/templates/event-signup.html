@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Event Signup</title>
+{% endblock %}
+
+{% block header %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/add-member.css') }}">
+{% endblock %}
+
+{% block body %}
+    <!--take the text input from each input field and build a query from it-->
+    <h1>Check In</h1>
+    <form id="input-form" action="{{ url_for('process_event_signup') }}" method="POST">
+        <label for="netId">UCI Net Id:</label>
+        <input type="text" id="netId" name="netId"><br>
+
+        <label for="eventName">Event Name:</label>
+        <input type="text" id="eventName" name="eventName"><br>
+
+        <input id="submit-button" type="submit" value="Register">
+    </form>
+{% endblock %}

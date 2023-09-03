@@ -13,8 +13,6 @@ def routes(app, db):
     
     @app.route('/add-member', methods=['POST'])
     def process_add_member():
-        print("func reached")
-
         if request.method == 'POST':
             try:
                 #retrieve form data
@@ -31,9 +29,39 @@ def routes(app, db):
                 db.session.add(new_member)
                 db.session.commit()
 
-                return("Student successfully added")
+                return("Student successfully added!")
             except Exception as e:
                 # rollback if not successful
                 db.session.rollback()
                 print("Error:", repr(e))
                 return("Error adding student")
+            
+    @app.route('/event-signup', methods=['GET'])
+    def render_event_signup():
+        return render_template('event-signup.html')
+    
+    @app.route('/event-signup', methods=['POST'])
+    def process_event_signup():
+        if request.method == 'POST':
+            try:
+                #first try to find the student by netID
+                netId = request.form.get('netId').lower()
+                member_id = db.session.query(Member.id).filter(Member.net_id == netId).scalar()
+                
+                #then try to find the event by event name
+                eventName = request.form.get('eventName').lower()
+                event_id = db.session.query(Event.id).filter(Event.event_name == eventName).scalar()
+
+                #if we can find them then try to add their row into signups table
+                new_signup = Signup(member_id=member_id, event_id=event_id)
+
+                db.session.add(new_signup)
+                db.session.commit()
+
+                return("Successfully signed up!")
+            except Exception as e:
+                # rollback if not successful
+                db.session.rollback()
+                print("Error:", repr(e))
+                return("Error signing up for event")
+    

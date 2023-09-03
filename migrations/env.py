@@ -1,5 +1,5 @@
 from app.models import Member, Event, Signup
-
+import app.dbinit
 import logging
 from logging.config import fileConfig
 
