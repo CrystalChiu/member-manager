@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block header %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/add-member.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -15,8 +15,14 @@
         <label for="netId">UCI Net Id:</label>
         <input type="text" id="netId" name="netId"><br>
 
+        <!--im gonna change this into a selection type instead of text input later-->
         <label for="eventName">Event Name:</label>
-        <input type="text" id="eventName" name="eventName"><br>
+        <div id="event-display-options">
+            {% for event in avail_events %}         
+                <input type="checkbox" id="eventName" name="eventName" value="{{ event }}">
+                <label for="eventName">{{ event }}</label><br>
+            {% endfor %}
+        </div>
 
         <input id="submit-button" type="submit" value="Register">
     </form>

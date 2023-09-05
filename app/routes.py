@@ -7,6 +7,7 @@ def routes(app, db):
     def index():
         return render_template('index.html')
 
+    #----------add member feature----------
     @app.route('/add-member', methods=["GET"])
     def render_add_member():
         return render_template('add-member.html')
@@ -36,9 +37,13 @@ def routes(app, db):
                 print("Error:", repr(e))
                 return("Error adding student")
             
+    #----------event signup feature----------
     @app.route('/event-signup', methods=['GET'])
     def render_event_signup():
-        return render_template('event-signup.html')
+        #today = datetime.today().date()
+        avail_events = [event[0] for event in db.session.query(Event.event_name).all()]
+
+        return render_template('event-signup.html', avail_events=avail_events)
     
     @app.route('/event-signup', methods=['POST'])
     def process_event_signup():

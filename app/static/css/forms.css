@@ -21,3 +21,7 @@ label {
 input {
     max-width: 50%;
 }
+
+h1 {
+    margin-left: 10px;
+}
