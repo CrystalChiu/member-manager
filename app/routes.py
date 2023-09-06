@@ -20,11 +20,10 @@ def routes(app, db):
                 fname = request.form.get('fname').lower()
                 lname = request.form.get('lname').lower()
                 netId = request.form.get('netId').lower()
-                status = "free"
                 print(fname + " " + lname + " " + netId)
 
                 #create new member object & populate fields w/input data
-                new_member = Member(first_name=fname, last_name=lname, net_id=netId, status=status) 
+                new_member = Member(first_name=fname, last_name=lname, net_id=netId) 
 
                 # query insert into 'member'
                 db.session.add(new_member)
@@ -69,4 +68,6 @@ def routes(app, db):
                 db.session.rollback()
                 print("Error:", repr(e))
                 return("Error signing up for event")
+            
+
     

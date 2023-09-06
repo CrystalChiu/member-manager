@@ -5,7 +5,8 @@ class Member(db.Model):
     first_name = db.Column(db.String(50), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
     net_id = db.Column(db.String(20), unique=True, nullable=False)
-    status = db.Column(db.String(20))
+    status = db.Column(db.String(20), default='free')
+    attendance =  db.Column(db.Integer, default=0)
 
     signups = db.relationship('Signup', backref='member', lazy=True)
 
