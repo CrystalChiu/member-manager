@@ -69,5 +69,27 @@ def routes(app, db):
                 print("Error:", repr(e))
                 return("Error signing up for event")
             
-
+    #----------member check in feature----------
+    @app.route('/check-in', methods=['GET'])
+    def render_check_in():
+        return render_template('member-check-in.html')
     
+    @app.route('/check-in', methods=['POST'])
+    def process_check_in():
+        if request.method == 'POST':
+            try:
+                #first try to find the student by netID
+                netId = request.form.get('netId').lower()
+                member = db.session.query(Member).filter(Member.net_id == netId).scalar()
+                
+                #then increment the attendence column by 1
+                member.attendance += 1
+
+                db.session.commit()
+
+                return("Checked in!")
+            except Exception as e:
+                # rollback if not successful
+                db.session.rollback()
+                print("Error:", repr(e))
+                return("Error checking in")

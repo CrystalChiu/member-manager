@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Check In</title>
+{% endblock %}
+
+{% block header %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}">
+{% endblock %}
+
+{% block body %}
+    <h1>Check In</h1>
+    <form id="input-form" action="{{ url_for('process_check_in') }}" method="POST">
+        <label for="netId">UCI Net Id:</label>
+        <input type="text" id="netId" name="netId"><br>
+
+        <input id="submit-button" type="submit" value="Register">
+    </form>
+{% endblock %}
