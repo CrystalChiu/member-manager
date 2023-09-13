@@ -16,7 +16,7 @@ branch_labels = None
 depends_on = None
 
 def upgrade():
-    op.add_column('event', sa.Column('signup_deadline', sa.Date(), nullable=True))
+    op.add_column('event', sa.Column('signup_deadline', sa.Date(), nullable=False))
 
 
 def downgrade():

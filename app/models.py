@@ -18,6 +18,7 @@ class Event(db.Model):
     date = db.Column(db.Date, nullable=False)
     event_name = db.Column(db.String(50), unique=True, nullable=False)
     max_capacity = db.Column(db.Integer, nullable=True)
+    signup_deadline = db.Column(db.Date, nullable=False)
 
     signups = db.relationship('Signup', backref='event', lazy=True)
 
