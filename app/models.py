@@ -5,9 +5,12 @@ class Member(db.Model):
     first_name = db.Column(db.String(50), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
     net_id = db.Column(db.String(20), unique=True, nullable=False)
-    status = db.Column(db.String(20), default='free')
     attendance =  db.Column(db.Integer, default=0)
+    email = db.Column(db.String(50), nullable=False, unique=True)
+    member_status_id = db.Column(db.Integer, db.ForeignKey('member_status.id'), nullable=False, default=1)
+    received_id = db.Column('received_id', db.Boolean(), default=False)
 
+    member_status = db.relationship('MemberStatus', backref='members', lazy=True)
     signups = db.relationship('Signup', backref='member', lazy=True)
 
     def __repr__(self):
@@ -41,3 +44,9 @@ class Signup(db.Model):
     def __repr__(self):
         return f'<Signup of {self.member_net_id} for {self.event_name}>'
 
+class MemberStatus(db.model):
+    id = db.Column(db.Integer, primary_key=True)
+    status = db.Column(db.String(10), unique=True, nullable=False)
+    
+    def __repr__(self):
+        return f'<Status code {self.id} for {self.status}>'
