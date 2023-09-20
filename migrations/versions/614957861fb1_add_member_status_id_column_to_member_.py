@@ -27,7 +27,6 @@ def upgrade():
 
     with op.batch_alter_table('member') as batch_op:
         batch_op.add_column(sa.Column('member_status_id', sa.Integer, sa.ForeignKey('member_status.id', name='fk_member_member_status'), nullable=False, default=1))
-
         batch_op.drop_column('status')
 
 def downgrade():
@@ -35,10 +34,12 @@ def downgrade():
     op.add_column('member', sa.Column('status', sa.String(20), nullable=False, default='free'))
 
     #populate status column with default value 'free'
-    #op.execute("UPDATE member SET status='free'")
+    op.execute("UPDATE member SET status='free'")
 
-    #pemove  member_status_id column from Member table
-    op.drop_column('member', 'member_status_id')
+
+    #remove  member_status_id column from Member table
+    with op.batch_alter_table('member') as batch_op:
+        batch_op.drop_constraint('fk_member_member_status')
 
     #drop member_statuses table
     op.drop_table('member_status')
