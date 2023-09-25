@@ -1,0 +1,45 @@
+#center-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#grouping {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#text-blurb {
+    align-self: center;
+}
+
+#police-tape {
+    display: flex;
+    background-color: #F2BA28;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 20px;
+    font-weight: bold;
+    /*
+    font-size: 40px;
+    */
+    justify-content: space-around;
+    box-shadow: 0px 3px 4px 0px #B7B7B7;
+    align-items: center;
+}
+
+.police-tape-pattern {
+    font-style: italic;
+}
+
+.section {
+    width: 100%;
+    background-color: black;
+    padding: 50px;
+    color: white;
+}
+
+img {
+    height: 500px;
+}

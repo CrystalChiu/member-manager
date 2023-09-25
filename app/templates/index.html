@@ -1,9 +1,32 @@
 {% extends 'base.html' %}
 
-{% block title %}
-    Member Manager
+{% block header %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <title>Forensic Club UCI</title>
 {% endblock %}
 
 {% block body %}
-    Index Page (navbar to be added)
+    <div id="center-display">
+        <div id="grouping">
+            <img src="{{ url_for('static', filename='images/logo.png') }}">
+            <p id="text-blurb">join us.</p>
+        </div>
+    </div>
+
+    <div id="police-tape">
+        <h1 class="police-tape-pattern">Forensic Club</h1>
+        <h1 style="font-weight: bold;">@UCI</h1>
+        <h1 class="police-tape-pattern">Forensic Club</h1>
+    </div>
+
+    <div class="section">
+        <h1>About Us.</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+        </p>
+        <br>
+        <hr style="color: white; width: 10%; margin: auto; opacity: 100;">
+        <br>
+    </div>
 {% endblock %}
