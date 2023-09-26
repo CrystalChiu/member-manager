@@ -16,19 +16,19 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         
-        <div id="main-nav-content" class="collapse navbar-collapse">
+        <div id="navbarSupportedContent" class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
+                <li class="nav-item {% if request.path == url_for('index') %}active{% endif %}">
+                    <a class="nav-link" href="{{ url_for('index') }}">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Sign Up</a>
+                <li class="nav-item {% if request.path == url_for('render_add_member') %}active{% endif %}">
+                    <a class="nav-link" href="{{ url_for('render_add_member') }}">Sign Up</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Register For Event</a>
+                <li class="nav-item {% if request.path == url_for('render_event_signup') %}active{% endif %}">
+                    <a class="nav-link" href="{{ url_for('render_event_signup') }}">Register For Event</a>
                 </li>
-                <li class="nav-item">
-                    <a id="admin-button" class="nav-link" href="#">Admin</a>
+                <li class="nav-item {% if request.path == url_for('render_admin_tools') %}active{% endif %}">
+                    <a id="admin-button" class="nav-link" href="{{ url_for('render_admin_tools') }}">Admin</a>
                 </li>
             </ul>
         </div>
