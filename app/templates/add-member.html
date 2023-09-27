@@ -8,16 +8,18 @@
 {% block body %}
     <!--take the text input from each input field and build a query from it-->
     <h1>Member Registration Form</h1>
-    <form id="input-form" action="{{ url_for('process_add_member') }}" method="POST">
-        <label for="fname">First name:</label>
-        <input type="text" id="fname" name="fname"><br>
+    <div class="card">
+        <form id="input-form" action="{{ url_for('process_add_member') }}" method="POST">
+            <label for="fname">First name:</label>
+            <input type="text" id="fname" name="fname"><br>
 
-        <label for="lname">Last name:</label>
-        <input type="text" id="lname" name="lname"><br>
+            <label for="lname">Last name:</label>
+            <input type="text" id="lname" name="lname"><br>
 
-        <label for="netId">UCI Net Id:</label>
-        <input type="text" id="netId" name="netId"><br>
+            <label for="netId">UCI Net Id:</label>
+            <input type="text" id="netId" name="netId"><br>
 
-        <input id="submit-button" type="submit" value="Register">
-    </form>
+            <input id="submit-button" type="submit" value="Register">
+        </form>
+    </div>
 {% endblock %}
