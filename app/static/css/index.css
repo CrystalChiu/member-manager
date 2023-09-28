@@ -15,7 +15,7 @@
     align-self: center;
     font-weight: 450;
     margin: 15px;
-    font-size: large;
+    font-size: x-large;
 }
 
 #logo {
@@ -36,10 +36,6 @@
     justify-content: space-around;
     box-shadow: 0px 3px 4px 0px #B7B7B7;
     align-items: center;
-}
-
-#grouping {
-    margin: 100px;
 }
 
 .police-tape-pattern {

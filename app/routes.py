@@ -13,7 +13,7 @@ def routes(app, db, ADMIN_PASSWORD_HASH):
 
     @app.route('/add-member', methods=["GET"])
     def render_add_member():
-        return render_template('add-member.html')
+        return render_template('add-member.html', submit='process_add_member', page_title='Sign Up')
     
     @app.route('/add-member', methods=['POST'])
     def process_add_member():
@@ -43,7 +43,7 @@ def routes(app, db, ADMIN_PASSWORD_HASH):
         #today = datetime.today().date()
         avail_events = [event[0] for event in db.session.query(Event.event_name).all()]
 
-        return render_template('event-signup.html', avail_events=avail_events)
+        return render_template('event-signup.html', submit='process_event_signup', avail_events=avail_events, page_title='Event Sign Up')
     
     @app.route('/event-signup', methods=['POST'])
     def process_event_signup():
@@ -71,7 +71,7 @@ def routes(app, db, ADMIN_PASSWORD_HASH):
             
     @app.route('/check-in', methods=['GET'])
     def render_check_in():
-        return render_template('member-check-in.html')
+        return render_template('member-check-in.html', submit='process_check_in', page_title='Check In')
     
     @app.route('/check-in', methods=['POST'])
     def process_check_in():

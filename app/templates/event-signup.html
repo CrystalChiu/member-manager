@@ -1,26 +1,21 @@
-{% extends 'base.html' %}
+{% extends 'forms.html' %}
 
-{% block header %}
-    <title>Event Signup</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}">
-{% endblock %}
+{% block form_title %}<h1>Event Signup</h1>{% endblock %}
+    
+{% block form_content %}
+    <label for="netId">UCI Net Id:</label>
+    <input type="text" id="netId" name="netId"><br>
 
-{% block body %}
-    <!--take the text input from each input field and build a query from it-->
-    <h1>Event Sign Up</h1>
-    <form id="input-form" action="{{ url_for('process_event_signup') }}" method="POST">
-        <label for="netId">UCI Net Id:</label>
-        <input type="text" id="netId" name="netId"><br>
-
-        <!--im gonna change this into a selection type instead of text input later-->
-        <label for="eventName">Event Name:</label>
-        <div id="event-display-options">
+    <label for="eventName">Event Name:</label>
+    <div id="event-display-options">
+        {% if avail_events %}
             {% for event in avail_events %}         
                 <input type="checkbox" id="eventName" name="eventName" value="{{ event }}">
                 <label for="eventName">{{ event }}</label><br>
             {% endfor %}
-        </div>
-
-        <input id="submit-button" type="submit" value="Register">
-    </form>
+        {% else %}
+            <p>No Events Yet!</p>
+        {% endif %}
+    </div>
+    <input id="submit-button" type="submit" value="Register">
 {% endblock %}
