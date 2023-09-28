@@ -6,17 +6,6 @@
     width: 80%;
 }
 
-#submit-button {
-    margin: auto;
-    margin-bottom: 0;
-    width: fit-content;
-    padding: 10px 15px 10px 15px;
-    background: #BA1949;;
-    color: white;
-    border: none;
-    border-radius: 5px;
-}
-
 label {
     margin-bottom: 5px;
     font-weight: 500;

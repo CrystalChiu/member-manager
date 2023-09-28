@@ -17,11 +17,6 @@
     padding: 6px 10px 6px 10px;
 }
 
-#text-blurb {
-    margin: 10px;
-    font-weight: bold;
-}
-
 a {
     color: white !important;
     text-decoration: none;
@@ -38,6 +33,13 @@ a {
     margin-right: 20px;
 }
 
-#grouping {
-    margin: 100px;
+#submit-button {
+    margin: auto;
+    margin-bottom: 0;
+    width: fit-content;
+    padding: 10px 15px 10px 15px;
+    background: #BA1949;;
+    color: white;
+    border: none;
+    border-radius: 5px;
 }
