@@ -22,10 +22,11 @@ def routes(app, db, ADMIN_PASSWORD_HASH):
             fname = request.form.get('fname').lower()
             lname = request.form.get('lname').lower()
             netId = request.form.get('netId').lower()
-            print(fname + " " + lname + " " + netId)
+            email = request.form.get('email').lower()
+            print(fname + " " + lname + " " + netId + " " + email)
 
             #create new member object & populate fields w/input data
-            new_member = Member(first_name=fname, last_name=lname, net_id=netId) 
+            new_member = Member(first_name=fname, last_name=lname, net_id=netId, email=email) 
 
             # query insert into 'member'
             db.session.add(new_member)
