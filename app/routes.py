@@ -2,6 +2,7 @@ from flask import render_template, request, redirect, session, url_for
 from sqlalchemy.exc import IntegrityError
 from models import Member, Event, Signup
 from werkzeug.security import check_password_hash
+import re
 
 def routes(app, db, ADMIN_PASSWORD_HASH):
 
@@ -23,7 +24,11 @@ def routes(app, db, ADMIN_PASSWORD_HASH):
             lname = request.form.get('lname').lower()
             netId = request.form.get('netId').lower()
             email = request.form.get('email').lower()
-            print(fname + " " + lname + " " + netId + " " + email)
+
+            #verify is a uci email
+            pattern = r'^[a-zA-Z0-9_.+-]+@uci\.edu$'
+            if not re.match(pattern, email):
+                raise ValueError("Must be a UCI email")
 
             #create new member object & populate fields w/input data
             new_member = Member(first_name=fname, last_name=lname, net_id=netId, email=email) 
